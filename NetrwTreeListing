@@ -1,0 +1,16 @@
+" ============================================================================
+" Netrw Directory Listing                                        (netrw v173)
+"   /Users/junwoo/.config/nvim/lua/junwoo/core
+"   Sorted by      name
+"   Sort sequence: [\/]$,\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,\~\=\*$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$
+"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by  x:special
+" ==============================================================================
+../
+nvim/
+| lua/
+| | junwoo/
+| | | core/
+| | | | options.lua
+| | | plugins/
+| | | lazy.lua
+| init.lua
