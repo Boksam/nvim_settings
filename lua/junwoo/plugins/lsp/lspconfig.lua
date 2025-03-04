@@ -85,6 +85,7 @@ return {
 					capabilities = capabilities,
 				})
 			end,
+
 			["lua_ls"] = function()
 				-- configure lua server (with special settings)
 				lspconfig["lua_ls"].setup({
@@ -102,6 +103,49 @@ return {
 					},
 				})
 			end,
+
+			["pyright"] = function()
+				lspconfig.pyright.setup({
+					capabilities = capabilities,
+					-- on_attach = on_attach,
+					settings = {
+						python = {
+							analysis = {
+								typeCheckingMode = "basic",
+								autoSearchPaths = true,
+								useLibraryCodeForTypes = true,
+								diagnosticMode = "workspace",
+							},
+						},
+					},
+				})
+			end,
+
+			["pylsp"] = function()
+				lspconfig.pylsp.setup({
+					capabilities = capabilities,
+					-- on_attach = on_attach,
+					settings = {
+						pylsp = {
+							plugins = {
+								pycodestyle = { enabled = true },
+								pylint = { enabled = true },
+								rope_completion = { enabled = true },
+								flake8 = { enabled = false },
+								jedi_completion = {
+									enabled = true,
+									include_params = true,
+								},
+								jedi = {
+									environment = nil,
+									extra_paths = {},
+								},
+							},
+						},
+					},
+				})
+			end,
+
 			["tsserver"] = function()
 				lspconfig["tsserver"].setup({
 					capabilities = capabilities,
@@ -131,6 +175,14 @@ return {
 							},
 						},
 					},
+				})
+			end,
+
+			["volar"] = function()
+				lspconfig.volar.setup({
+					capabilities = capabilities,
+					-- `on_attach = on_attach,
+					filetypes = { "vue" },
 				})
 			end,
 		})
