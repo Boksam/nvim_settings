@@ -110,6 +110,8 @@ return {
 					-- on_attach = on_attach,
 					settings = {
 						python = {
+							venvPath = ".",
+							venv = "venv",
 							analysis = {
 								typeCheckingMode = "basic",
 								autoSearchPaths = true,
