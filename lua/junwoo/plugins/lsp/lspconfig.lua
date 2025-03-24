@@ -130,10 +130,9 @@ return {
 					settings = {
 						pylsp = {
 							plugins = {
-								pycodestyle = { enabled = true },
 								pylint = { enabled = true },
 								rope_completion = { enabled = true },
-								flake8 = { enabled = false },
+								flake8 = { enabled = true },
 								jedi_completion = {
 									enabled = true,
 									include_params = true,
