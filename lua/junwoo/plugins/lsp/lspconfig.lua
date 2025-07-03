@@ -78,114 +78,72 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		mason_lspconfig.setup_handlers({
-			-- default handler for installed servers
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-
-			["lua_ls"] = function()
-				-- configure lua server (with special settings)
-				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							-- make the language server recognize "vim" global
-							diagnostics = {
-								globals = { "vim" },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
+		vim.lsp.config("lua_ls", {
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					-- make the language server recognize "vim" global
+					diagnostics = {
+						globals = { "vim" },
 					},
-				})
-			end,
-
-			["pyright"] = function()
-				lspconfig.pyright.setup({
-					capabilities = capabilities,
-					-- on_attach = on_attach,
-					settings = {
-						python = {
-							venvPath = ".",
-							venv = "venv",
-							analysis = {
-								typeCheckingMode = "basic",
-								autoSearchPaths = true,
-								useLibraryCodeForTypes = true,
-								diagnosticMode = "workspace",
-							},
-						},
+					completion = {
+						callSnippet = "Replace",
 					},
-				})
-			end,
+				},
+			},
+		})
 
-			["pylsp"] = function()
-				lspconfig.pylsp.setup({
-					capabilities = capabilities,
-					-- on_attach = on_attach,
-					settings = {
-						pylsp = {
-							plugins = {
-								pylint = { enabled = true },
-								rope_completion = { enabled = true },
-								flake8 = { enabled = true },
-								jedi_completion = {
-									enabled = true,
-									include_params = true,
-								},
-								jedi = {
-									environment = nil,
-									extra_paths = {},
-								},
-							},
-						},
+		vim.lsp.config("pyright", {
+			capabilities = capabilities,
+			-- on_attach = on_attach,
+			settings = {
+				python = {
+					venvPath = ".",
+					venv = "venv",
+					analysis = {
+						typeCheckingMode = "basic",
+						autoSearchPaths = true,
+						useLibraryCodeForTypes = true,
+						diagnosticMode = "workspace",
 					},
-				})
-			end,
+				},
+			},
+		})
 
-			["tsserver"] = function()
-				lspconfig["tsserver"].setup({
-					capabilities = capabilities,
-					filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-					cmd = { "typescript-language-server", "--stdio" },
-					settings = {
-						typescript = {
-							inlayHints = {
-								includeInlayParameterNameHints = "all",
-								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-								includeInlayFunctionParameterTypeHints = true,
-								includeInlayVariableTypeHints = true,
-								includeInlayPropertyDeclarationTypeHints = true,
-								includeInlayFunctionLikeReturnTypeHints = true,
-								includeInlayEnumMemberValueHints = true,
-							},
-						},
-						javascript = {
-							inlayHints = {
-								includeInlayParameterNameHints = "all",
-								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-								includeInlayFunctionParameterTypeHints = true,
-								includeInlayVariableTypeHints = true,
-								includeInlayPropertyDeclarationTypeHints = true,
-								includeInlayFunctionLikeReturnTypeHints = true,
-								includeInlayEnumMemberValueHints = true,
-							},
-						},
+		vim.lsp.config("ts_ls", {
+			capabilities = capabilities,
+			filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+			cmd = { "typescript-language-server", "--stdio" },
+			settings = {
+				typescript = {
+					inlayHints = {
+						includeInlayParameterNameHints = "all",
+						includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+						includeInlayFunctionParameterTypeHints = true,
+						includeInlayVariableTypeHints = true,
+						includeInlayPropertyDeclarationTypeHints = true,
+						includeInlayFunctionLikeReturnTypeHints = true,
+						includeInlayEnumMemberValueHints = true,
 					},
-				})
-			end,
+				},
+				javascript = {
+					inlayHints = {
+						includeInlayParameterNameHints = "all",
+						includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+						includeInlayFunctionParameterTypeHints = true,
+						includeInlayVariableTypeHints = true,
+						includeInlayPropertyDeclarationTypeHints = true,
+						includeInlayFunctionLikeReturnTypeHints = true,
+						includeInlayEnumMemberValueHints = true,
+					},
+				},
+			},
+		})
 
-			["volar"] = function()
-				lspconfig.volar.setup({
-					capabilities = capabilities,
-					-- `on_attach = on_attach,
-					filetypes = { "vue" },
-				})
-			end,
+		vim.lsp.config("volar", {
+			capabilities = capabilities,
+			-- `on_attach = on_attach,
+			filetypes = { "vue" },
 		})
 	end,
 }
