@@ -5,15 +5,10 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
-		-- import mason
 		local mason = require("mason")
-
-		-- import mason-lspconfig
-		local mason_lspconfig = require("mason-lspconfig")
-
 		local mason_tool_installer = require("mason-tool-installer")
 
-		-- enable mason and configure icons
+		-- mason 설정
 		mason.setup({
 			ui = {
 				icons = {
@@ -24,32 +19,15 @@ return {
 			},
 		})
 
-		mason_lspconfig.setup({
-			-- list of servers for mason to install
-			ensure_installed = {
-				"ts_ls",
-				"html",
-				"cssls",
-				"tailwindcss",
-				"svelte",
-				"lua_ls",
-				"graphql",
-				"emmet_ls",
-				"prismals",
-				"pyright",
-				-- "vue-language-server@2.2.8", -- specific version for vue language server
-				"vuels",
-				-- "vtsls",
-			},
-		})
-
+		-- mason-tool-installer를 사용해 포매터, 린터 등 설치
+		-- LSP 서버 목록은 lspconfig.lua에서 관리합니다.
 		mason_tool_installer.setup({
 			ensure_installed = {
-				"prettier", -- prettier formatter
-				"stylua", -- lua formatter
-				"isort", -- python formatter
-				"black", -- python formatter
-				"eslint_d", -- eslint linter
+				"prettier", -- prettier 포매터
+				"stylua", -- lua 포매터
+				"isort", -- python 포매터
+				"black", -- python 포매터
+				"eslint_d", -- eslint 린터
 			},
 		})
 	end,
