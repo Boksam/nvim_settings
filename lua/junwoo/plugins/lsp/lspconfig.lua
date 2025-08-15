@@ -98,7 +98,7 @@ return {
 			-- on_attach = on_attach,
 			settings = {
 				python = {
-					venvPath = ".",
+					-- venvPath = ".",
 					venv = "venv",
 					analysis = {
 						typeCheckingMode = "basic",
@@ -140,9 +140,8 @@ return {
 			},
 		})
 
-		vim.lsp.config("volar", {
+		vim.lsp.config("vuels", {
 			capabilities = capabilities,
-			-- `on_attach = on_attach,
 			filetypes = { "vue" },
 		})
 	end,

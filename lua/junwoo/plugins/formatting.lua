@@ -20,6 +20,7 @@ return {
 				liquid = { "prettier" },
 				lua = { "stylua" },
 				python = { "yapf" },
+				vue = { "prettier" },
 			},
 			format_on_save = {
 				lsp_fallback = true,

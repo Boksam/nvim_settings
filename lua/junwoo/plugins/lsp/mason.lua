@@ -37,7 +37,9 @@ return {
 				"emmet_ls",
 				"prismals",
 				"pyright",
-				"pylsp",
+				-- "vue-language-server@2.2.8", -- specific version for vue language server
+				"vuels",
+				-- "vtsls",
 			},
 		})
 
@@ -47,6 +49,7 @@ return {
 				"stylua", -- lua formatter
 				"isort", -- python formatter
 				"black", -- python formatter
+				"eslint_d", -- eslint linter
 			},
 		})
 	end,
