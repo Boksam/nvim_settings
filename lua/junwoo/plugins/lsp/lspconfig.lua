@@ -89,6 +89,8 @@ return {
 				"pyright",
 				-- "vuels",
 				"dockerls",
+				"gopls",
+				"clangd",
 			},
 			handlers = {
 				function(server_name)
@@ -152,6 +154,32 @@ return {
 									includeInlayEnumMemberValueHints = true,
 								},
 							},
+						},
+					})
+				end,
+				["gopls"] = function()
+					lspconfig.gopls.setup({
+						on_attach = on_attach,
+						capabilities = capabilities,
+						settings = {
+							gopls = {},
+						},
+					})
+				end,
+				["clangd"] = function()
+					lspconfig.clangd.setup({
+						on_attach = on_attach,
+						capabilities = capabilities,
+						-- clangd는 커맨드라인 인자로 추가 기능을 활성화할 수 있습니다.
+						-- 예를 들어, 백그라운드 인덱싱, clang-tidy 통합 등을 활성화합니다.
+						cmd = {
+							"clangd",
+							"--background-index",
+							"--clang-tidy",
+							"--header-insertion=iwyu",
+							"--completion-style=detailed",
+							"--function-arg-placeholders",
+							"-j=12", -- 사용하는 CPU 코어 수에 맞게 조절
 						},
 					})
 				end,

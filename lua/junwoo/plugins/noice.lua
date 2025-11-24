@@ -2,14 +2,25 @@ return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
 	opts = {
-		-- add any options here
+		routes = {
+			{
+				filter = { event = "msg_show" },
+				view = "notify",
+			},
+		},
 	},
 	dependencies = {
-		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 		"MunifTanjim/nui.nvim",
-		"rcarriga/nvim-notify",
+		{
+			"rcarriga/nvim-notify",
+			opts = {
+				background_colour = "#000000",
+			},
+		},
 	},
-
-	vim.keymap.set("n", "<leader>nl", "<cmd>Noice last<CR>");
-	vim.keymap.set("n", "<leader>nh", "<cmd>Noice history<CR>");
+	config = function(_, opts)
+		require("noice").setup(opts)
+		vim.keymap.set("n", "<leader>nl", "<cmd>Noice last<CR>")
+		vim.keymap.set("n", "<leader>nh", "<cmd>Noice history<CR>")
+	end,
 }

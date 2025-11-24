@@ -28,6 +28,8 @@ return {
 				"isort", -- python 포매터
 				"black", -- python 포매터
 				"eslint_d", -- eslint 린터
+				"goimports", -- Go 포매터
+				"golangci-lint", -- Go 린터
 			},
 		})
 	end,
